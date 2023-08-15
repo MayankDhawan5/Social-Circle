@@ -1,0 +1,45 @@
+<app-toolbar></app-toolbar>
+<div class="container" style="margin-top: 30px">
+  <div class="row">
+    <div class="col s12 m4 l3"><app-side></app-side></div>
+    <div class="col s12 m8 l9">
+      <div class="row">
+        <div class="col s12 m6 l4 carDiv" *ngFor="let user of users">
+          <div class="card">
+            <a>
+              <div class="card-image imgDiv">
+                <img
+                  class="imgCircle responsive-img"
+                  src="http://placehold.it/100x100"
+                />
+              </div>
+            </a>
+            <h3 class="card-action">
+              <h3 class="card-title">{{ user.username }}</h3>
+              <!-- <p>Country</p> -->
+              <button
+                class="btn"
+                *ngIf="!CheckInArray(userArr, user._id)"
+                (click)="FollowUser(user)"
+              >
+                Follow
+              </button>
+              <button
+                class="btn disabled following"
+                *ngIf="CheckInArray(userArr, user._id)"
+              >
+                Following
+              </button>
+              <a
+                class="secondary-content"
+                [routerLink]="['/chat', user.username]"
+              >
+                <i class="material-icons">chat</i>
+              </a>
+            </h3>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

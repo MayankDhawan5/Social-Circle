@@ -1,0 +1,48 @@
+<nav class="nav-extended">
+  <div class="container">
+    <div class="nav-wrapper">
+      <a (click)="GoToHome()" class="brand-logo">Chat App</a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li class="dropdown-button dropdown-trigger" data-target="dropdown">
+          <i class="fa fa-globe fa-1x badge"></i>
+          <span class="nav-label-icon circle" *ngIf="count.length > 0">{{
+            count.length
+          }}</span>
+          <ul id="dropdown" class="dropdown-content col s12 collection">
+            <li
+              class="collection-item avatar"
+              *ngFor="let data of notifications"
+            >
+              <img
+                class="imgCircle responsive-img"
+                src="http://placehold.it/50x50"
+              />
+              <span [ngClass]="data.read ? 'isRead' : 'unread'">{{
+                data.message
+              }}</span>
+              <p class="time">{{ TimeFromNow(data.created) }}</p>
+            </li>
+            <li *ngIf="notifications.length <= 0">
+              <p class="text">No Notification</p>
+            </li>
+            <p class="secondary-content">
+              <a class="markAll btn" (click)="MarkAll()">Mark All As Read</a>
+            </p>
+          </ul>
+        </li>
+        <li>
+          <a (click)="logout()">Logout</a>
+        </li>
+      </ul>
+    </div>
+    <div class="nav-content">
+      <div
+        class="circle"
+        src="http://placehold.it/50x50
+      "
+      ></div>
+    </div>
+    <h1 class="profile-name">{{ user.username }}</h1>
+    <!-- <p class="user-text">This is a post</p> -->
+  </div>
+</nav>
